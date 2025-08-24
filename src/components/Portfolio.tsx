@@ -253,60 +253,97 @@ const Portfolio = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section id="about" className="relative section-padding overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-primary"></div>
+        <div className="absolute top-1/3 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 text-sm mb-6">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-primary font-medium">About Me</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              Know More <span className="gradient-text">About Me</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               A passionate computer science student with a strong foundation in programming, 
               web development, and emerging technologies.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="animate-fade-in">
-              <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                I'm currently pursuing my B.Tech in Computer Science and Engineering, 
-                with a deep interest in artificial intelligence, web development, and 
-                open-source technologies. My goal is to leverage technology to create 
-                innovative solutions that have a positive impact on society.
-              </p>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Through various projects and internships, I've developed strong 
-                analytical thinking skills and a collaborative approach to problem-solving. 
-                I'm always eager to learn new technologies and take on challenging projects.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Badge variant="secondary">Problem Solver</Badge>
-                <Badge variant="secondary">Team Player</Badge>
-                <Badge variant="secondary">Fast Learner</Badge>
-                <Badge variant="secondary">Tech Enthusiast</Badge>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="animate-fade-in space-y-8">
+              <div className="relative">
+                <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-primary rounded-full"></div>
+                <div className="pl-8">
+                  <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <Sparkles className="w-8 h-8 text-primary" />
+                    My Journey
+                  </h3>
+                  <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                    <p>
+                      I'm currently pursuing my B.Tech in Computer Science and Engineering, 
+                      with a deep interest in artificial intelligence, web development, and 
+                      open-source technologies. My goal is to leverage technology to create 
+                      innovative solutions that have a positive impact on society.
+                    </p>
+                    <p>
+                      Through various projects and internships, I've developed strong 
+                      analytical thinking skills and a collaborative approach to problem-solving. 
+                      I'm always eager to learn new technologies and take on challenging projects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: "Problem Solver", icon: Brain },
+                  { label: "Team Player", icon: Users },
+                  { label: "Fast Learner", icon: Award },
+                  { label: "Tech Enthusiast", icon: Code }
+                ].map((trait, index) => (
+                  <div key={index} className="glass-card p-4 hover:bg-primary/5 transition-colors group">
+                    <div className="flex items-center gap-3">
+                      <trait.icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                      <span className="font-medium text-sm">{trait.label}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             
-            <div className="animate-slide-up">
-              <h3 className="text-2xl font-semibold mb-6">Education</h3>
-              <div className="space-y-6">
-                {education.map((edu, index) => (
-                  <Card key={index} className="card-hover glass-card">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-primary/10 rounded-lg">
-                          <edu.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-lg mb-1">{edu.degree}</h4>
-                          <p className="text-muted-foreground mb-2">{edu.institution}</p>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="w-4 h-4" />
-                            <span>{edu.year}</span>
+            <div className="animate-slide-up space-y-8">
+              <div className="relative">
+                <h3 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                  <Award className="w-8 h-8 text-accent" />
+                  Education
+                </h3>
+                <div className="space-y-6">
+                  {education.map((edu, index) => (
+                    <div key={index} className="relative group">
+                      <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
+                        <div className="flex items-start gap-4">
+                          <div className="p-3 bg-gradient-primary rounded-xl shadow-glow group-hover:scale-110 transition-transform duration-300">
+                            <edu.icon className="w-6 h-6 text-background" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-bold text-xl mb-2">{edu.degree}</h4>
+                            <p className="text-primary font-medium mb-3">{edu.institution}</p>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <Calendar className="w-4 h-4" />
+                              <span>{edu.year}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -314,272 +351,500 @@ const Portfolio = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="section-padding bg-secondary/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Experience</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Professional experience and internships that have shaped my technical skills.
+      <section id="experience" className="relative section-padding bg-gradient-to-br from-secondary/10 via-background to-secondary/5 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 left-1/4 w-6 h-6 border-2 border-primary/20 rotate-45 animate-bounce delay-500"></div>
+        <div className="absolute bottom-32 right-1/3 w-4 h-4 bg-accent/30 rounded-full animate-pulse delay-700"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm mb-6">
+              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+              <span className="text-accent font-medium">Professional Journey</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              My <span className="gradient-text">Experience</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Professional experience and internships that have shaped my technical skills and career path.
             </p>
           </div>
           
-          <Card className="card-hover glass-card max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <div className="flex items-start gap-6">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <Users className="w-8 h-8 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-semibold mb-2">Intern - Eduskills</h3>
-                  <p className="text-primary mb-4">Cohort 7 to 12</p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Participated in comprehensive training programs focusing on industry-relevant 
-                    skills including software development, project management, and collaborative 
-                    problem-solving. Gained hands-on experience with modern development tools 
-                    and methodologies while working on real-world projects.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <Badge variant="outline">Team Collaboration</Badge>
-                    <Badge variant="outline">Project Management</Badge>
-                    <Badge variant="outline">Software Development</Badge>
-                    <Badge variant="outline">Problem Solving</Badge>
+          <div className="relative max-w-5xl mx-auto">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-primary rounded-full hidden md:block"></div>
+            
+            <div className="glass-card border border-primary/20 hover:border-primary/40 transition-all duration-500 group">
+              <div className="p-8 md:p-12 relative">
+                {/* Timeline dot */}
+                <div className="absolute left-8 top-12 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-glow hidden md:block transform -translate-x-1/2"></div>
+                
+                <div className="md:ml-16">
+                  <div className="flex items-start gap-6">
+                    <div className="p-4 bg-gradient-primary rounded-xl shadow-glow group-hover:scale-110 transition-transform duration-300">
+                      <Users className="w-10 h-10 text-background" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                        <h3 className="text-3xl font-bold">Intern - Eduskills</h3>
+                        <div className="flex items-center gap-2 text-primary font-medium bg-primary/10 px-3 py-1 rounded-full w-fit">
+                          <Calendar className="w-4 h-4" />
+                          <span>Cohort 7 to 12</span>
+                        </div>
+                      </div>
+                      
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                        Participated in comprehensive training programs focusing on industry-relevant 
+                        skills including software development, project management, and collaborative 
+                        problem-solving. Gained hands-on experience with modern development tools 
+                        and methodologies while working on real-world projects.
+                      </p>
+                      
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        {[
+                          "Team Collaboration",
+                          "Project Management", 
+                          "Software Development",
+                          "Problem Solving"
+                        ].map((skill, index) => (
+                          <div key={index} className="glass-card p-3 text-center hover:bg-primary/5 transition-colors group/skill">
+                            <span className="text-sm font-medium group-hover/skill:text-primary transition-colors">{skill}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="section-padding">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Skills & Technologies</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A diverse set of technical skills and technologies I work with.
+      <section id="skills" className="relative section-padding overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-full h-1 bg-gradient-primary"></div>
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse delay-300"></div>
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-700"></div>
+        
+        {/* Floating code symbols */}
+        <div className="absolute top-32 right-1/4 text-primary/20 text-4xl font-bold animate-bounce delay-1000">&lt;/&gt;</div>
+        <div className="absolute bottom-40 left-1/4 text-accent/20 text-3xl font-bold animate-pulse delay-500">{}</div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 text-sm mb-6">
+              <Code className="w-4 h-4 text-primary" />
+              <span className="text-primary font-medium">Technical Expertise</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              Skills & <span className="gradient-text">Technologies</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              A comprehensive toolkit of technologies and frameworks I work with to build amazing digital experiences.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
             {skills.map((skill, index) => (
-              <Card key={index} className="card-hover glass-card group">
-                <CardContent className="p-6 text-center">
-                  <div className="p-3 bg-primary/10 rounded-lg mx-auto w-fit mb-4 group-hover:bg-primary/20 transition-colors">
-                    <skill.icon className="w-8 h-8 text-primary" />
+              <div key={index} className="group">
+                <div className="glass-card p-6 text-center hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20 h-full">
+                  <div className="relative mb-4">
+                    <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl mx-auto w-fit group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-glow">
+                      <skill.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
+                    </div>
+                    {/* Skill level indicator */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-pulse"></div>
                   </div>
-                  <h3 className="font-semibold mb-2">{skill.name}</h3>
-                  <p className="text-sm text-muted-foreground">{skill.category}</p>
-                </CardContent>
-              </Card>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{skill.name}</h3>
+                  <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{skill.category}</p>
+                </div>
+              </div>
             ))}
           </div>
           
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-semibold mb-6">Additional Skills</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Badge variant="secondary">Analytical Thinking</Badge>
-              <Badge variant="secondary">Communication</Badge>
-              <Badge variant="secondary">Adaptability</Badge>
-              <Badge variant="secondary">Cloud Computing</Badge>
-              <Badge variant="secondary">Open Source</Badge>
-              <Badge variant="secondary">RDBMS</Badge>
-              <Badge variant="secondary">Algorithms</Badge>
+          {/* Additional Skills Cloud */}
+          <div className="text-center">
+            <h3 className="text-3xl font-bold mb-8 flex items-center justify-center gap-3">
+              <Brain className="w-8 h-8 text-accent" />
+              Additional Expertise
+            </h3>
+            <div className="glass-card p-8 border border-primary/20">
+              <div className="flex flex-wrap justify-center gap-4">
+                {[
+                  "Analytical Thinking",
+                  "Communication", 
+                  "Adaptability",
+                  "Cloud Computing",
+                  "Open Source",
+                  "RDBMS",
+                  "Algorithms"
+                ].map((skill, index) => (
+                  <div key={index} className="group">
+                    <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 hover:border-primary/40 rounded-full px-4 py-2 transition-all duration-300 hover:scale-105 hover:shadow-glow">
+                      <span className="font-medium text-foreground group-hover:text-primary transition-colors">{skill}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-secondary/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              What I can help you build and create.
+      <section className="relative section-padding bg-gradient-to-br from-secondary/5 via-background to-accent/5 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-1/3 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse delay-200"></div>
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-2xl animate-pulse delay-800"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm mb-6">
+              <Globe className="w-4 h-4 text-accent" />
+              <span className="text-accent font-medium">What I Offer</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              My <span className="gradient-text">Services</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Comprehensive development services to bring your digital ideas to life.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="card-hover glass-card">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <service.icon className="w-8 h-8 text-primary" />
+              <div key={index} className="group">
+                <div className="glass-card p-8 h-full hover:bg-primary/5 transition-all duration-500 border border-transparent hover:border-primary/20 relative overflow-hidden">
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6 mb-6">
+                      <div className="p-4 bg-gradient-primary rounded-xl shadow-glow group-hover:scale-110 transition-transform duration-300">
+                        <service.icon className="w-8 h-8 text-background" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed text-lg">{service.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                    
+                    {/* Service features */}
+                    <div className="flex items-center gap-2 text-sm text-primary/80 group-hover:text-primary transition-colors">
+                      <ArrowRight className="w-4 h-4" />
+                      <span>Professional & Modern Solutions</span>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="section-padding">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Portfolio</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A showcase of my recent projects and development work.
+      <section id="portfolio" className="relative section-padding overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-primary"></div>
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-2xl animate-pulse delay-500"></div>
+        
+        {/* Floating project icons */}
+        <div className="absolute top-32 left-1/4 w-8 h-8 border-2 border-primary/20 rounded-lg rotate-12 animate-bounce delay-300"></div>
+        <div className="absolute bottom-40 right-1/3 w-6 h-6 bg-accent/30 rounded-full animate-pulse delay-700"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 text-sm mb-6">
+              <Code className="w-4 h-4 text-primary" />
+              <span className="text-primary font-medium">My Work</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              A showcase of my recent projects and development work, featuring modern technologies and innovative solutions.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="card-hover glass-card group">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="outline">{tech}</Badge>
-                    ))}
+              <div key={index} className="group">
+                <div className="glass-card p-8 h-full hover:bg-primary/5 transition-all duration-500 border border-transparent hover:border-primary/20 relative overflow-hidden">
+                  {/* Project number */}
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-background font-bold text-sm">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
                   
-                  <div className="flex gap-4">
-                    <Button variant="outline" size="sm" className="flex items-center gap-2">
-                      <Github className="w-4 h-4" />
-                      Code
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex items-center gap-2">
-                      <ExternalLink className="w-4 h-4" />
-                      Demo
-                    </Button>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative z-10 h-full flex flex-col">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{project.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed text-lg flex-1">{project.description}</p>
+                    </div>
+                    
+                    {/* Tech stack */}
+                    <div className="mb-8">
+                      <h4 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, techIndex) => (
+                          <div key={techIndex} className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full px-3 py-1 text-sm font-medium hover:bg-primary/20 transition-colors">
+                            {tech}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Action buttons */}
+                    <div className="flex gap-4 mt-auto">
+                      <Button variant="outline" size="sm" className="flex items-center gap-2 group/btn hover:bg-primary/10 hover:border-primary/40 flex-1">
+                        <Github className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                        <span>View Code</span>
+                      </Button>
+                      <Button variant="outline" size="sm" className="flex items-center gap-2 group/btn hover:bg-accent/10 hover:border-accent/40 flex-1">
+                        <ExternalLink className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                        <span>Live Demo</span>
+                      </Button>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
+          </div>
+          
+          {/* Call to action */}
+          <div className="text-center mt-16">
+            <div className="glass-card p-8 border border-primary/20 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">Want to see more?</h3>
+              <p className="text-muted-foreground mb-6">Check out my GitHub for more projects and contributions to open source.</p>
+              <Button className="hover-glow group">
+                <Github className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                Visit GitHub Profile
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-padding bg-secondary/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Let's connect and discuss opportunities to work together.
+      <section id="contact" className="relative section-padding bg-gradient-to-br from-secondary/10 via-background to-secondary/5 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-2xl animate-pulse delay-700"></div>
+        
+        {/* Communication symbols */}
+        <div className="absolute top-32 right-1/4 text-primary/10 text-6xl animate-pulse delay-500">@</div>
+        <div className="absolute bottom-40 left-1/4 text-accent/10 text-4xl animate-bounce delay-300">#</div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm mb-6">
+              <MessageSquare className="w-4 h-4 text-accent" />
+              <span className="text-accent font-medium">Let's Connect</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              Get In <span className="gradient-text">Touch</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-primary mx-auto mb-6"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="animate-fade-in">
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always open to discussing new opportunities, collaborations, 
-                or just having a conversation about technology and innovation.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Info */}
+            <div className="animate-fade-in space-y-8">
+              <div>
+                <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Mail className="w-8 h-8 text-primary" />
+                  Let's Connect
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  I'm always open to discussing new opportunities, collaborations, 
+                  or just having a conversation about technology and innovation.
+                </p>
+              </div>
               
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Mail className="w-6 h-6 text-primary" />
+              <div className="space-y-8">
+                {[
+                  { icon: Mail, label: "Email", value: "umarmulla@example.com", color: "primary" },
+                  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/umarmulla", color: "accent" },
+                  { icon: Github, label: "GitHub", value: "github.com/umarmulla", color: "primary" }
+                ].map((contact, index) => (
+                  <div key={index} className="group">
+                    <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
+                      <div className="flex items-center gap-6">
+                        <div className={`p-4 bg-gradient-to-br from-${contact.color}/10 to-accent/10 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          <contact.icon className={`w-6 h-6 text-${contact.color}`} />
+                        </div>
+                        <div>
+                          <p className="font-bold text-lg mb-1">{contact.label}</p>
+                          <p className="text-muted-foreground group-hover:text-primary transition-colors">{contact.value}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-muted-foreground">umarmulla@example.com</p>
+                ))}
+              </div>
+              
+              {/* Social proof */}
+              <div className="glass-card p-6 border border-primary/20">
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span className="text-primary font-medium">Usually responds within 24 hours</span>
                   </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Linkedin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">LinkedIn</p>
-                    <p className="text-muted-foreground">linkedin.com/in/umarmulla</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Github className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">GitHub</p>
-                    <p className="text-muted-foreground">github.com/umarmulla</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">Ready to discuss your next project</p>
                 </div>
               </div>
             </div>
             
-            <Card className="glass-card">
-              <CardContent className="p-8">
+            {/* Contact Form */}
+            <div className="animate-slide-up">
+              <div className="glass-card p-8 border border-primary/20 hover:border-primary/30 transition-colors">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Send a Message</h3>
+                  <p className="text-muted-foreground">Fill out the form below and I'll get back to you soon.</p>
+                </div>
+                
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-background/50"
-                    />
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name *</label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email *</label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-background/50"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message *</label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={4}
-                      className="bg-background/50"
+                      rows={5}
+                      className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors resize-none"
+                      placeholder="Tell me about your project or just say hello..."
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full hover-glow">
-                    <MessageSquare className="w-4 h-4 mr-2" />
-                    Send Message
+                  <Button type="submit" className="w-full hover-glow group relative overflow-hidden">
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                      Send Message
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
                 </form>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground">
-              © 2024 Umar Mukhtiyar Mulla. All rights reserved.
-            </p>
-            <div className="flex gap-4">
-              <Button variant="ghost" size="sm">
-                <Github className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Linkedin className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Mail className="w-5 h-5" />
-              </Button>
+      <footer className="relative border-t border-border/50 overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-secondary/5 to-background"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {/* Brand */}
+            <div className="space-y-4">
+              <div className="text-2xl font-bold gradient-text">Umar Mulla</div>
+              <p className="text-muted-foreground leading-relaxed">
+                Aspiring Computer Science Engineer passionate about creating innovative digital solutions.
+              </p>
+              <div className="flex items-center gap-2 text-sm text-primary">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <span>Open to new opportunities</span>
+              </div>
+            </div>
+            
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Quick Links</h4>
+              <div className="flex flex-col space-y-2">
+                {['About', 'Experience', 'Skills', 'Portfolio', 'Contact'].map((link) => (
+                  <button 
+                    key={link}
+                    onClick={() => scrollToSection(link.toLowerCase())}
+                    className="text-muted-foreground hover:text-primary transition-colors text-left w-fit"
+                  >
+                    {link}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            {/* Contact Info */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-foreground">Get In Touch</h4>
+              <div className="space-y-3">
+                <a href="mailto:umarmulla@example.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm">umarmulla@example.com</span>
+                </a>
+                <div className="flex gap-3">
+                  <a href="https://github.com" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                    <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+                  <a href="https://linkedin.com" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                    <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom bar */}
+          <div className="border-t border-border/50 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-muted-foreground text-sm">
+                © 2024 Umar Mukhtiyar Mulla. All rights reserved.
+              </p>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <span>Built with React & Tailwind CSS</span>
+                <div className="w-1 h-1 bg-primary rounded-full"></div>
+                <span>Designed with ❤️</span>
+              </div>
             </div>
           </div>
         </div>
