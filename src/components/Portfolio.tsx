@@ -18,7 +18,9 @@ import {
   ChevronDown,
   MapPin,
   Calendar,
-  Award
+  Award,
+  ArrowRight,
+  Sparkles
 } from "lucide-react";
 import profileImage from "@/assets/profile-image.jpg";
 
@@ -128,55 +130,125 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="section-padding pt-32 min-h-screen flex items-center">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-                Hi, I'm{" "}
-                <span className="gradient-text">Umar Mukhtiyar Mulla</span>
-              </h1>
-              <h2 className="text-2xl lg:text-3xl text-muted-foreground mb-6">
-                Aspiring Computer Science Engineer & Developer
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Passionate about technology, problem-solving, and innovation. 
-                Building solutions that make a difference.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  variant="default" 
-                  size="lg" 
-                  className="hover-glow"
-                  onClick={() => scrollToSection('portfolio')}
-                >
-                  View My Work
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  Contact Me
-                </Button>
-              </div>
-            </div>
-            <div className="flex justify-center animate-slide-up">
-              <div className="relative">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-glow">
-                  <img 
-                    src={profileImage} 
-                    alt="Umar Mukhtiyar Mulla" 
-                    className="w-full h-full object-cover"
-                  />
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        
+        {/* Floating Geometric Shapes */}
+        <div className="absolute top-20 right-1/4 w-4 h-4 bg-primary/20 rotate-45 animate-bounce delay-1000"></div>
+        <div className="absolute bottom-32 left-1/4 w-6 h-6 border-2 border-primary/30 rotate-12 animate-pulse delay-500"></div>
+        <div className="absolute top-1/2 right-10 w-3 h-3 bg-accent/40 rounded-full animate-bounce delay-300"></div>
+
+        <div className="relative z-10 section-padding pt-32 w-full">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 animate-fade-in">
+                {/* Status Badge */}
+                <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 text-sm">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                  <span className="text-primary font-medium">Available for opportunities</span>
                 </div>
-                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-10"></div>
+                
+                {/* Main Heading */}
+                <div className="space-y-4">
+                  <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+                    Hi, I'm{" "}
+                    <span className="gradient-text block lg:inline">Umar Mukhtiyar Mulla</span>
+                  </h1>
+                  <div className="relative">
+                    <h2 className="text-2xl lg:text-3xl text-muted-foreground font-light">
+                      Aspiring Computer Science Engineer & Developer
+                    </h2>
+                    <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-primary rounded-full"></div>
+                  </div>
+                </div>
+                
+                {/* Description */}
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
+                  Passionate about creating innovative solutions through code. 
+                  Transforming ideas into digital reality with modern technologies.
+                </p>
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button 
+                    variant="default" 
+                    size="lg" 
+                    className="hover-glow group relative overflow-hidden"
+                    onClick={() => scrollToSection('portfolio')}
+                  >
+                    <span className="relative z-10">View My Work</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="group hover:bg-primary/5 hover:border-primary/50"
+                    onClick={() => scrollToSection('contact')}
+                  >
+                    <span>Contact Me</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+                
+                {/* Social Links */}
+                <div className="flex items-center space-x-6 pt-6">
+                  <div className="w-8 h-px bg-border"></div>
+                  <div className="flex space-x-4">
+                    <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Profile Image Section */}
+              <div className="flex justify-center lg:justify-end animate-slide-up">
+                <div className="relative group">
+                  {/* Outer glow ring */}
+                  <div className="absolute -inset-4 bg-gradient-primary rounded-full opacity-20 blur-lg group-hover:opacity-30 transition-opacity duration-500"></div>
+                  
+                  {/* Main image container */}
+                  <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+                    <div className="glass-card rounded-full p-1 w-full h-full">
+                      <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/30 relative">
+                        <img 
+                          src={profileImage} 
+                          alt="Umar Mukhtiyar Mulla - Computer Science Engineer" 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Floating badges */}
+                  <div className="absolute -top-4 -right-4 glass-card rounded-full p-3 animate-bounce delay-200">
+                    <Code className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="absolute -bottom-4 -left-4 glass-card rounded-full p-3 animate-bounce delay-700">
+                    <Sparkles className="w-6 h-6 text-accent" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-muted-foreground" />
+          <div className="flex flex-col items-center space-y-2">
+            <span className="text-xs text-muted-foreground tracking-widest">SCROLL</span>
+            <ChevronDown className="w-5 h-5 text-primary" />
+          </div>
         </div>
       </section>
 
