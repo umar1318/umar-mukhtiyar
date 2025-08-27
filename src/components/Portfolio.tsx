@@ -22,7 +22,7 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
-import profileImage from "@/assets/profile-image.jpg";
+import profileImage from "@/assets/profile-image-new.jpg";
 
 const Portfolio = () => {
   const [formData, setFormData] = useState({
