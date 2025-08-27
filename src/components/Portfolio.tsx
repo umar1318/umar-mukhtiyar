@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 import { 
   Github, 
   Linkedin, 
@@ -30,6 +32,8 @@ const Portfolio = () => {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const skills = [
     { name: "Java", icon: Code, category: "Programming" },
@@ -100,10 +104,48 @@ const Portfolio = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Umar Mukhtiyar Mulla',
+      };
+
+      await emailjs.send(
+        'service_lznwsmb', // Your Service ID
+        'template_wpoo6e8', // Your Template ID
+        templateParams,
+        'QfC4-WiOomtmRCqNM' // Your Public Key
+      );
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: ""
+      });
+
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -764,11 +806,24 @@ const Portfolio = () => {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full hover-glow group relative overflow-hidden">
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full hover-glow group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      Send Message
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                          Send Message
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </>
+                      )}
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
