@@ -6,26 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ExternalLink, 
-  Code, 
-  Database, 
-  Globe, 
-  Brain,
-  Users,
-  MessageSquare,
-  ChevronDown,
-  MapPin,
-  Calendar,
-  Award,
-  ArrowRight,
-  Sparkles
-} from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code, Database, Globe, Brain, Users, MessageSquare, ChevronDown, MapPin, Calendar, Award, ArrowRight, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile-image-new.jpg";
-
 const Portfolio = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -33,100 +15,106 @@ const Portfolio = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const skills = [
-    { name: "Java", icon: Code, category: "Programming" },
-    { name: "Python", icon: Code, category: "Programming" },
-    { name: "JavaScript", icon: Code, category: "Programming" },
-    { name: "HTML/CSS", icon: Globe, category: "Web" },
-    { name: "SQL", icon: Database, category: "Database" },
-    { name: "Git/GitHub", icon: Github, category: "Tools" },
-    { name: "Data Structures", icon: Brain, category: "Algorithms" },
-    { name: "Machine Learning", icon: Brain, category: "AI/ML" },
-  ];
-
-  const projects = [
-    {
-      title: "Student Management System",
-      description: "Full-stack application for managing student records with comprehensive CRUD operations and user authentication.",
-      tech: ["Java", "MySQL", "HTML", "CSS"],
-      github: "https://github.com/umar1318",
-      demo: "#"
-    },
-    {
-      title: "Online Portfolio Website",
-      description: "Responsive personal website built with modern web technologies and hosted on GitHub Pages.",
-      tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-      github: "https://github.com/umar1318",
-      demo: "#"
-    }
-  ];
-
-  const education = [
-    {
-      degree: "B.Tech in Computer Science and Engineering",
-      institution: "G. Pullaiah College of Engineering and Technology",
-      year: "Expected 2026",
-      icon: Award
-    },
-    {
-      degree: "Diploma in Computer Science and Engineering",
-      institution: "Govt. Polytechnic for Minorities",
-      year: "2023",
-      icon: Award
-    },
-    {
-      degree: "Secondary Education",
-      institution: "Zilla Parishad High School",
-      year: "2020",
-      icon: Award
-    }
-  ];
-
-  const services = [
-    {
-      title: "Web Development",
-      description: "Responsive and user-friendly websites built with modern technologies",
-      icon: Globe
-    },
-    {
-      title: "Software Development",
-      description: "Clean, efficient applications with robust functionality",
-      icon: Code
-    }
-  ];
-
+  const {
+    toast
+  } = useToast();
+  const skills = [{
+    name: "Java",
+    icon: Code,
+    category: "Programming"
+  }, {
+    name: "Python",
+    icon: Code,
+    category: "Programming"
+  }, {
+    name: "JavaScript",
+    icon: Code,
+    category: "Programming"
+  }, {
+    name: "HTML/CSS",
+    icon: Globe,
+    category: "Web"
+  }, {
+    name: "SQL",
+    icon: Database,
+    category: "Database"
+  }, {
+    name: "Git/GitHub",
+    icon: Github,
+    category: "Tools"
+  }, {
+    name: "Data Structures",
+    icon: Brain,
+    category: "Algorithms"
+  }, {
+    name: "Machine Learning",
+    icon: Brain,
+    category: "AI/ML"
+  }];
+  const projects = [{
+    title: "Student Management System",
+    description: "Full-stack application for managing student records with comprehensive CRUD operations and user authentication.",
+    tech: ["Java", "MySQL", "HTML", "CSS"],
+    github: "https://github.com/umar1318",
+    demo: "#"
+  }, {
+    title: "Online Portfolio Website",
+    description: "Responsive personal website built with modern web technologies and hosted on GitHub Pages.",
+    tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    github: "https://github.com/umar1318",
+    demo: "#"
+  }];
+  const education = [{
+    degree: "B.Tech in Computer Science and Engineering",
+    institution: "G. Pullaiah College of Engineering and Technology",
+    year: "Expected 2026",
+    icon: Award
+  }, {
+    degree: "Diploma in Computer Science and Engineering",
+    institution: "Govt. Polytechnic for Minorities",
+    year: "2023",
+    icon: Award
+  }, {
+    degree: "Secondary Education",
+    institution: "Zilla Parishad High School",
+    year: "2020",
+    icon: Award
+  }];
+  const services = [{
+    title: "Web Development",
+    description: "Responsive and user-friendly websites built with modern technologies",
+    icon: Globe
+  }, {
+    title: "Software Development",
+    description: "Clean, efficient applications with robust functionality",
+    icon: Code
+  }];
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       // EmailJS configuration
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
-        to_name: 'Umar Mukhtiyar Mulla',
+        to_name: 'Umar Mukhtiyar Mulla'
       };
-
-      await emailjs.send(
-        'service_lznwsmb', // Your Service ID
-        'template_wpoo6e8', // Your Template ID
-        templateParams,
-        'QfC4-WiOomtmRCqNM' // Your Public Key
+      await emailjs.send('service_lznwsmb',
+      // Your Service ID
+      'template_wpoo6e8',
+      // Your Template ID
+      templateParams, 'QfC4-WiOomtmRCqNM' // Your Public Key
       );
-
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon."
       });
 
       // Reset form
@@ -135,25 +123,23 @@ const Portfolio = () => {
         email: "",
         message: ""
       });
-
     } catch (error) {
       console.error('EmailJS error:', error);
       toast({
         title: "Failed to send message",
         description: "Something went wrong. Please try again or contact me directly.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -215,21 +201,11 @@ const Portfolio = () => {
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Button 
-                    variant="default" 
-                    size="lg" 
-                    className="hover-glow group relative overflow-hidden"
-                    onClick={() => scrollToSection('portfolio')}
-                  >
+                  <Button variant="default" size="lg" className="hover-glow group relative overflow-hidden" onClick={() => scrollToSection('portfolio')}>
                     <span className="relative z-10">View My Work</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="group hover:bg-primary/5 hover:border-primary/50"
-                    onClick={() => scrollToSection('contact')}
-                  >
+                  <Button variant="outline" size="lg" className="group hover:bg-primary/5 hover:border-primary/50" onClick={() => scrollToSection('contact')}>
                     <span>Contact Me</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -262,11 +238,7 @@ const Portfolio = () => {
                   <div className="relative w-80 h-80 lg:w-96 lg:h-96">
                     <div className="glass-card rounded-full p-1 w-full h-full">
                       <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/30 relative">
-                        <img 
-                          src={profileImage} 
-                          alt="Umar Mukhtiyar Mulla - Computer Science Engineer" 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        <img src={profileImage} alt="Umar Mukhtiyar Mulla - Computer Science Engineer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
                       </div>
                     </div>
@@ -343,19 +315,24 @@ const Portfolio = () => {
               </div>
               
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Problem Solver", icon: Brain },
-                  { label: "Team Player", icon: Users },
-                  { label: "Fast Learner", icon: Award },
-                  { label: "Tech Enthusiast", icon: Code }
-                ].map((trait, index) => (
-                  <div key={index} className="glass-card p-4 hover:bg-primary/5 transition-colors group">
+                {[{
+                label: "Problem Solver",
+                icon: Brain
+              }, {
+                label: "Team Player",
+                icon: Users
+              }, {
+                label: "Fast Learner",
+                icon: Award
+              }, {
+                label: "Tech Enthusiast",
+                icon: Code
+              }].map((trait, index) => <div key={index} className="glass-card p-4 hover:bg-primary/5 transition-colors group">
                     <div className="flex items-center gap-3">
                       <trait.icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                       <span className="font-medium text-sm">{trait.label}</span>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
             
@@ -366,8 +343,7 @@ const Portfolio = () => {
                   Education
                 </h3>
                 <div className="space-y-6">
-                  {education.map((edu, index) => (
-                    <div key={index} className="relative group">
+                  {education.map((edu, index) => <div key={index} className="relative group">
                       <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
                         <div className="flex items-start gap-4">
                           <div className="p-3 bg-gradient-primary rounded-xl shadow-glow group-hover:scale-110 transition-transform duration-300">
@@ -383,8 +359,7 @@ const Portfolio = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -436,7 +411,8 @@ const Portfolio = () => {
                         <h3 className="text-3xl font-bold">Intern - Eduskills</h3>
                         <div className="flex items-center gap-2 text-primary font-medium bg-primary/10 px-3 py-1 rounded-full w-fit">
                           <Calendar className="w-4 h-4" />
-                          <span>Cohort 7 to 12</span>
+                          <span>
+                        </span>
                         </div>
                       </div>
                       
@@ -448,16 +424,9 @@ const Portfolio = () => {
                       </p>
                       
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {[
-                          "Team Collaboration",
-                          "Project Management", 
-                          "Software Development",
-                          "Problem Solving"
-                        ].map((skill, index) => (
-                          <div key={index} className="glass-card p-3 text-center hover:bg-primary/5 transition-colors group/skill">
+                        {["Team Collaboration", "Project Management", "Software Development", "Problem Solving"].map((skill, index) => <div key={index} className="glass-card p-3 text-center hover:bg-primary/5 transition-colors group/skill">
                             <span className="text-sm font-medium group-hover/skill:text-primary transition-colors">{skill}</span>
-                          </div>
-                        ))}
+                          </div>)}
                       </div>
                     </div>
                   </div>
@@ -495,8 +464,7 @@ const Portfolio = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-            {skills.map((skill, index) => (
-              <div key={index} className="group">
+            {skills.map((skill, index) => <div key={index} className="group">
                 <div className="glass-card p-6 text-center hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20 h-full">
                   <div className="relative mb-4">
                     <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl mx-auto w-fit group-hover:scale-110 transition-transform duration-300 shadow-md group-hover:shadow-glow">
@@ -508,8 +476,7 @@ const Portfolio = () => {
                   <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{skill.name}</h3>
                   <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{skill.category}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           {/* Additional Skills Cloud */}
@@ -520,21 +487,11 @@ const Portfolio = () => {
             </h3>
             <div className="glass-card p-8 border border-primary/20">
               <div className="flex flex-wrap justify-center gap-4">
-                {[
-                  "Analytical Thinking",
-                  "Communication", 
-                  "Adaptability",
-                  "Cloud Computing",
-                  "Open Source",
-                  "RDBMS",
-                  "Algorithms"
-                ].map((skill, index) => (
-                  <div key={index} className="group">
+                {["Analytical Thinking", "Communication", "Adaptability", "Cloud Computing", "Open Source", "RDBMS", "Algorithms"].map((skill, index) => <div key={index} className="group">
                     <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 hover:border-primary/40 rounded-full px-4 py-2 transition-all duration-300 hover:scale-105 hover:shadow-glow">
                       <span className="font-medium text-foreground group-hover:text-primary transition-colors">{skill}</span>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </div>
@@ -563,8 +520,7 @@ const Portfolio = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="group">
+            {services.map((service, index) => <div key={index} className="group">
                 <div className="glass-card p-8 h-full hover:bg-primary/5 transition-all duration-500 border border-transparent hover:border-primary/20 relative overflow-hidden">
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -587,8 +543,7 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -620,8 +575,7 @@ const Portfolio = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} className="group">
+            {projects.map((project, index) => <div key={index} className="group">
                 <div className="glass-card p-8 h-full hover:bg-primary/5 transition-all duration-500 border border-transparent hover:border-primary/20 relative overflow-hidden">
                   {/* Project number */}
                   <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-background font-bold text-sm">
@@ -641,11 +595,9 @@ const Portfolio = () => {
                     <div className="mb-8">
                       <h4 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">Technologies Used</h4>
                       <div className="flex flex-wrap gap-2">
-                        {project.tech.map((tech, techIndex) => (
-                          <div key={techIndex} className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full px-3 py-1 text-sm font-medium hover:bg-primary/20 transition-colors">
+                        {project.tech.map((tech, techIndex) => <div key={techIndex} className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full px-3 py-1 text-sm font-medium hover:bg-primary/20 transition-colors">
                             {tech}
-                          </div>
-                        ))}
+                          </div>)}
                       </div>
                     </div>
                     
@@ -662,8 +614,7 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
           
           {/* Call to action */}
@@ -721,12 +672,22 @@ const Portfolio = () => {
               </div>
               
               <div className="space-y-8">
-                {[
-                  { icon: Mail, label: "Email", value: "mukhtiyargpm2020@gmail.com", color: "primary" },
-                  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/umarmulla", color: "accent" },
-                  { icon: Github, label: "GitHub", value: "github.com/umar1318", color: "primary" }
-                ].map((contact, index) => (
-                  <div key={index} className="group">
+                {[{
+                icon: Mail,
+                label: "Email",
+                value: "mukhtiyargpm2020@gmail.com",
+                color: "primary"
+              }, {
+                icon: Linkedin,
+                label: "LinkedIn",
+                value: "linkedin.com/in/umarmulla",
+                color: "accent"
+              }, {
+                icon: Github,
+                label: "GitHub",
+                value: "github.com/umar1318",
+                color: "primary"
+              }].map((contact, index) => <div key={index} className="group">
                     <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
                       <div className="flex items-center gap-6">
                         <div className={`p-4 bg-gradient-to-br from-${contact.color}/10 to-accent/10 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300`}>
@@ -738,8 +699,7 @@ const Portfolio = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               
               {/* Social proof */}
@@ -766,64 +726,30 @@ const Portfolio = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name *</label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors"
-                        placeholder="Your full name"
-                      />
+                      <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors" placeholder="Your full name" />
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email *</label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors"
-                        placeholder="mukhtiyargpm2020@gmail.com"
-                      />
+                      <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} required className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors" placeholder="mukhtiyargpm2020@gmail.com" />
                     </div>
                   </div>
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message *</label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors resize-none"
-                      placeholder="Tell me about your project or just say hello..."
-                    />
+                    <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows={5} className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors resize-none" placeholder="Tell me about your project or just say hello..." />
                   </div>
                   
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full hover-glow group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
+                  <Button type="submit" disabled={isSubmitting} className="w-full hover-glow group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed">
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      {isSubmitting ? (
-                        <>
+                      {isSubmitting ? <>
                           <div className="w-4 h-4 border-2 border-background border-t-transparent rounded-full animate-spin" />
                           Sending...
-                        </>
-                      ) : (
-                        <>
+                        </> : <>
                           <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
                           Send Message
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </>
-                      )}
+                        </>}
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
@@ -857,15 +783,9 @@ const Portfolio = () => {
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">Quick Links</h4>
               <div className="flex flex-col space-y-2">
-                {['About', 'Experience', 'Skills', 'Portfolio', 'Contact'].map((link) => (
-                  <button 
-                    key={link}
-                    onClick={() => scrollToSection(link.toLowerCase())}
-                    className="text-muted-foreground hover:text-primary transition-colors text-left w-fit"
-                  >
+                {['About', 'Experience', 'Skills', 'Portfolio', 'Contact'].map(link => <button key={link} onClick={() => scrollToSection(link.toLowerCase())} className="text-muted-foreground hover:text-primary transition-colors text-left w-fit">
                     {link}
-                  </button>
-                ))}
+                  </button>)}
               </div>
             </div>
             
@@ -904,8 +824,6 @@ const Portfolio = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Portfolio;
