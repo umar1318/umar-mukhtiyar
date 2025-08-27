@@ -51,14 +51,14 @@ const Portfolio = () => {
       title: "Student Management System",
       description: "Full-stack application for managing student records with comprehensive CRUD operations and user authentication.",
       tech: ["Java", "MySQL", "HTML", "CSS"],
-      github: "#",
+      github: "https://github.com/umar1318",
       demo: "#"
     },
     {
       title: "Online Portfolio Website",
       description: "Responsive personal website built with modern web technologies and hosted on GitHub Pages.",
       tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-      github: "#",
+      github: "https://github.com/umar1318",
       demo: "#"
     }
   ];
@@ -239,13 +239,13 @@ const Portfolio = () => {
                 <div className="flex items-center space-x-6 pt-6">
                   <div className="w-8 h-px bg-border"></div>
                   <div className="flex space-x-4">
-                    <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://github.com/umar1318" className="text-muted-foreground hover:text-primary transition-colors">
                       <Github className="w-5 h-5" />
                     </a>
                     <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="mailto:mukhtiyargpm2020@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                       <Mail className="w-5 h-5" />
                     </a>
                   </div>
@@ -722,9 +722,9 @@ const Portfolio = () => {
               
               <div className="space-y-8">
                 {[
-                  { icon: Mail, label: "Email", value: "umarmulla@example.com", color: "primary" },
+                  { icon: Mail, label: "Email", value: "mukhtiyargpm2020@gmail.com", color: "primary" },
                   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/umarmulla", color: "accent" },
-                  { icon: Github, label: "GitHub", value: "github.com/umarmulla", color: "primary" }
+                  { icon: Github, label: "GitHub", value: "github.com/umar1318", color: "primary" }
                 ].map((contact, index) => (
                   <div key={index} className="group">
                     <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
@@ -787,7 +787,7 @@ const Portfolio = () => {
                         onChange={handleInputChange}
                         required
                         className="bg-background/50 border-border hover:border-primary/50 focus:border-primary transition-colors"
-                        placeholder="your.email@example.com"
+                        placeholder="mukhtiyargpm2020@gmail.com"
                       />
                     </div>
                   </div>
@@ -873,12 +873,12 @@ const Portfolio = () => {
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">Get In Touch</h4>
               <div className="space-y-3">
-                <a href="mailto:umarmulla@example.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:mukhtiyargpm2020@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  <span className="text-sm">umarmulla@example.com</span>
+                  <span className="text-sm">mukhtiyargpm2020@gmail.com</span>
                 </a>
                 <div className="flex gap-3">
-                  <a href="https://github.com" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                  <a href="https://github.com/umar1318" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
                     <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
                   <a href="https://linkedin.com" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
