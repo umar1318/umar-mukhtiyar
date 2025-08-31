@@ -218,7 +218,7 @@ const Portfolio = () => {
                     <a href="https://github.com/umar1318" className="text-muted-foreground hover:text-primary transition-colors">
                       <Github className="w-5 h-5" />
                     </a>
-                    <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" className="text-muted-foreground hover:text-primary transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href="mailto:mukhtiyargpm2020@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
@@ -680,7 +680,7 @@ const Portfolio = () => {
               }, {
                 icon: Linkedin,
                 label: "LinkedIn",
-                value: "linkedin.com/in/umarmulla",
+                value: "www.linkedin.com/in/mulla-umar-mukhtiyar",
                 color: "accent"
               }, {
                 icon: Github,
@@ -801,7 +801,7 @@ const Portfolio = () => {
                   <a href="https://github.com/umar1318" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
                     <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
-                  <a href="https://linkedin.com" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                  <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
                     <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
                 </div>
