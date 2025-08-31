@@ -816,7 +816,7 @@ const Portfolio = () => {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span>Built with React & Tailwind CSS</span>
                 <div className="w-1 h-1 bg-primary rounded-full"></div>
-                <span>Designed with ❤️</span>
+                
               </div>
             </div>
           </div>
