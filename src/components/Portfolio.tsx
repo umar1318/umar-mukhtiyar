@@ -215,10 +215,10 @@ const Portfolio = () => {
                 <div className="flex items-center space-x-6 pt-6">
                   <div className="w-8 h-px bg-border"></div>
                   <div className="flex space-x-4">
-                    <a href="https://github.com/umar1318" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://github.com/umar1318" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                       <Github className="w-5 h-5" />
                     </a>
-                    <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a href="mailto:mukhtiyargpm2020@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
@@ -680,12 +680,12 @@ const Portfolio = () => {
               }, {
                 icon: Linkedin,
                 label: "LinkedIn",
-                value: "www.linkedin.com/in/mulla-umar-mukhtiyar",
+                value: "https://www.linkedin.com/in/mulla-umar-mukhtiyar",
                 color: "accent"
               }, {
                 icon: Github,
                 label: "GitHub",
-                value: "github.com/umar1318",
+                value: "https://github.com/umar1318",
                 color: "primary"
               }].map((contact, index) => <div key={index} className="group">
                     <div className="glass-card p-6 hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
@@ -798,10 +798,10 @@ const Portfolio = () => {
                   <span className="text-sm">mukhtiyargpm2020@gmail.com</span>
                 </a>
                 <div className="flex gap-3">
-                  <a href="https://github.com/umar1318" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                  <a href="https://github.com/umar1318" target="_blank" rel="noopener noreferrer" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
                     <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
-                  <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
+                  <a href="https://www.linkedin.com/in/mulla-umar-mukhtiyar" target="_blank" rel="noopener noreferrer" className="p-2 glass-card hover:bg-primary/10 transition-colors group">
                     <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </a>
                 </div>
