@@ -186,9 +186,7 @@ const Portfolio = () => {
                     <span className="gradient-text block lg:inline">Umar Mukhtiyar Mulla</span>
                   </h1>
                   <div className="relative">
-                    <h2 className="text-2xl lg:text-3xl text-muted-foreground font-light">
-                      Aspiring Computer Science Engineer & Developer
-                    </h2>
+                    <h2 className="text-2xl lg:text-3xl text-muted-foreground font-light">Aspiring Software Engineer & Developer</h2>
                     <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-primary rounded-full"></div>
                   </div>
                 </div>
